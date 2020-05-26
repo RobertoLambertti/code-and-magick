@@ -10,10 +10,10 @@ function getWizardHeight () {
   return 1.337 * wizardWidth;
 }
 
-function getWizardX (widthWindow) {
-  return widthWindow / 2;
+function getWizardX (windowWidth) {
+  return windowWidth / 2 - wizardWidth / 2;
 }
 
-function getWizardY (heightWindow) {
- return heightWindow / 3;
+function getWizardY (windowHeight) {
+ return windowHeight / 3;
 }
