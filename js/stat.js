@@ -43,8 +43,8 @@ function getMaxTime(times) {
   return Math.max.apply(null, times);
 }
 
-function getPlayerName(ctx, player, i) {
-  ctx.fillStyle = 'black';
+function getPlayerName(ctx, player, i, color) {
+  ctx.fillStyle = color;
   ctx.fillText(player, CLOUD_X + GAP + (BAR_WIDTH + BAR_GAP) * (i - 1), NAME_GAP_TOP, BAR_WIDTH + BAR_GAP);
 }
 
@@ -58,8 +58,8 @@ function getPlayerChart(ctx, time, player, i) {
   ctx.fillRect(CLOUD_X + GAP + (BAR_WIDTH + BAR_GAP) * (i - 1), CLOUD_Y + GAP + BAR_GAP_TOP + (BAR_MAX_HEIGHT - (BAR_MAX_HEIGHT * time / maxTime)), BAR_WIDTH, (BAR_MAX_HEIGHT * time) / maxTime);
 }
 
-function getPlayerTime(ctx, time, i) {
-  ctx.fillStyle = 'black';
+function getPlayerTime(ctx, time, i, color) {
+  ctx.fillStyle = color;
   ctx.fillText((time - 1), CLOUD_X + GAP + (BAR_WIDTH + BAR_GAP) * (i - 1), CLOUD_Y + GAP + TIME_GAP_TOP + (BAR_MAX_HEIGHT - (BAR_MAX_HEIGHT * time / maxTime)), BAR_WIDTH + BAR_GAP);
 }
 
@@ -75,8 +75,8 @@ window.renderStatistics = function (ctx, players, times) {
   for (var i = 1; i <= players.length; i++) {
     times[i - 1] = Math.floor(times[i - 1]); // Округляем время до целого числа
 
-    getPlayerName(ctx, players[i - 1], i);
-    getPlayerTime(ctx, times[i - 1], i);
+    getPlayerName(ctx, players[i - 1], i, 'black');
+    getPlayerTime(ctx, times[i - 1], i, 'black');
     getPlayerChart(ctx, times[i - 1], players[i - 1], i);
   }
 };
