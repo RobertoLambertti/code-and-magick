@@ -74,7 +74,7 @@ function getRenderWizard(wizard) {
   return wizardElement; // Возвращаем одного персонажа
 }
 
-setup.ELEMENT.classList.remove('hidden');
+setup.ELEMENT.classList.remove('hidden'); // Показываем попап редактирования персонажа
 
 for (var wizard = 0; wizard < wizards.length; wizard++) {
   wizardsFragment.appendChild(getRenderWizard(wizard)); // Вставляем в конец фрагмента одного персонажа на каждой итерации
