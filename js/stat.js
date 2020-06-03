@@ -16,7 +16,7 @@ var bar = {
   GAP_TOP: 70,
 };
 
-var title = {
+var Title = {
   RESULT: 'Ура вы победили!',
   LIST_RESULT: 'Список результатов:',
 };
@@ -70,8 +70,8 @@ window.renderStatistics = function (ctx, players, times) {
   getRenderCloud(ctx, 'rgba(0, 0, 0, 0.7)', сloud.X + 10, сloud.Y + 10, сloud.WIDTH, сloud.HEIGHT);
   getRenderCloud(ctx, '#fff', сloud.X, сloud.Y, сloud.WIDTH, сloud.HEIGHT);
 
-  getRenderTitle(ctx, сloud.TEXT, Color.BLACK, сloud.X + сloud.GAP, сloud.Y + сloud.GAP, title.RESULT);
-  getRenderTitle(ctx, сloud.TEXT, Color.BLACK, сloud.X + сloud.GAP, сloud.Y + сloud.GAP * 2, title.LIST_RESULT);
+  getRenderTitle(ctx, сloud.TEXT, Color.BLACK, сloud.X + сloud.GAP, сloud.Y + сloud.GAP, Title.RESULT);
+  getRenderTitle(ctx, сloud.TEXT, Color.BLACK, сloud.X + сloud.GAP, сloud.Y + сloud.GAP * 2, Title.LIST_RESULT);
 
   maxTime = getMaxTime(times); // Записываем максимальное число в переменную
 
