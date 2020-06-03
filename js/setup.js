@@ -61,7 +61,7 @@ function getCreateWizard(wizard) {
 
 setup.element.classList.remove('hidden'); // Показываем попап редактирования персонажа
 
-getArrayWizards(9); // Генерируем массив из четырёх персонажей
+getArrayWizards(4); // Генерируем массив из четырёх персонажей
 getRandomWizards(); // Генерируем случайные данные для персонажей
 
 for (var wizard = 0; wizard < wizards.length; wizard++) {
