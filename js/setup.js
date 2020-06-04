@@ -46,27 +46,30 @@ function getRandomWizards() {
   }
 }
 
-function getCreateWizard(wizard) {
-  var wizardElement = similarWizardTemplate.cloneNode(true); // Кнонируем узел со всем содержимым и записываем в переменную
-  var wizardNameElement = wizardElement.querySelector('.setup-similar-label'); // Находим из клона елемент отвечающий за имя и записываем в переменную
-  var wizardCoatColorElement = wizardElement.querySelector('.wizard-coat'); // Находим из клона елемент отвечающий за цвет плаща и записываем в переменную
-  var wizardEyesColorElement = wizardElement.querySelector('.wizard-eyes'); // Находим из клона елемент отвечающий за цвет глаз и записываем в переменную
+function getCreateWizards(template, fragment) {
+  for (var wizard = 0; wizard < wizards.length; wizard++) {
+    var wizardElement = template.cloneNode(true); // Кнонируем узел со всем содержимым и записываем в переменную
+    var wizardNameElement = wizardElement.querySelector('.setup-similar-label'); // Находим из клона елемент отвечающий за имя
+    var wizardCoatColorElement = wizardElement.querySelector('.wizard-coat'); // Находим из клона елемент отвечающий за цвет плаща
+    var wizardEyesColorElement = wizardElement.querySelector('.wizard-eyes'); // Находим из клона елемент отвечающий за цвет глаз
 
-  wizardNameElement.textContent = wizards[wizard].name; // Записываем в элемент имя
-  wizardCoatColorElement.style.fill = wizards[wizard].coatColor; // Указываем цвет заливки для плаща
-  wizardEyesColorElement.style.fill = wizards[wizard].eyesColor; // Указываем цвет заливки для глаз
+    wizardNameElement.textContent = wizards[wizard].name; // Записываем в элемент имя
+    wizardCoatColorElement.style.fill = wizards[wizard].coatColor; // Указываем цвет заливки для плаща
+    wizardEyesColorElement.style.fill = wizards[wizard].eyesColor; // Указываем цвет заливки для глаз
 
-  return wizardElement; // Возвращаем одного персонажа
+    fragment.appendChild(wizardElement); // Вставляем в конец фрагмента одного персонажа
+  }
+}
+
+function getRenderWizards(container) {
+  container.appendChild(wizardsFragment); // Вставляем фрагмент в разметку
 }
 
 setup.element.classList.remove('hidden'); // Показываем попап редактирования персонажа
 
 getArrayWizards(4); // Генерируем массив из четырёх персонажей
 getRandomWizards(); // Генерируем случайные данные для персонажей
+getCreateWizards(similarWizardTemplate, wizardsFragment); // Создаём персонажей из шаблона во фрагменте
+getRenderWizards(setup.listElement); // Рендрим персонажей в нужном конейнере
 
-for (var wizard = 0; wizard < wizards.length; wizard++) {
-  wizardsFragment.appendChild(getCreateWizard(wizard)); // Вставляем в конец фрагмента одного персонажа на каждой итерации
-}
-
-setup.listElement.appendChild(wizardsFragment); // Вставляем фрагмент в разметку
 setup.similarElement.classList.remove('hidden'); // Показываем блок с похожими персонажами
