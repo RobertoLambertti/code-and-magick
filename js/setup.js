@@ -1,5 +1,6 @@
 'use strict';
 
+var NUMBER_WIZARDS = 4;
 var MIN_NAME_LENGTH = 2;
 var MAX_NAME_LENGTH = 25;
 
@@ -183,7 +184,7 @@ function hangHandlers() {
 /* Конечные вызовы
 ============================================= */
 
-var wizards = getWizards(4); // Создаём массив с данными персонажей
+var wizards = getWizards(NUMBER_WIZARDS); // Создаём массив с данными персонажей
 var wizardsElements = wizards.map(createWizard); // Создаём массив элементов персонажей
 renderWizards(wizardsElements, setupListElement); // Вставляем элементы персонажей в нужный контейнер
 
