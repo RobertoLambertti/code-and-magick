@@ -17,24 +17,24 @@ function getRandomNumber(min, max) {
   return Math.floor(Math.random() * (max - min) + min);
 }
 
-function getWizard(array) {
+function getWizard() {
   var randomName = wizardsData.NAMES[getRandomNumber(0, wizardsData.NAMES.length)]; // Случайно выбираем имя из массива и записываем в переменную
   var randomSurname = wizardsData.SURNAMES[getRandomNumber(0, wizardsData.SURNAMES.length)]; // Случайно выбираем фамилию из массива и записываем в переменную
   var randomCoatColor = wizardsData.COAT_COLORS[getRandomNumber(0, wizardsData.COAT_COLORS.length)]; // Случайно выбираем цвет плаща из массива и записываем в переменную
   var randomEyesColor = wizardsData.EYES_COLORS[getRandomNumber(0, wizardsData.EYES_COLORS.length)]; // Случайно выбираем цвет глаз из массива и записываем в переменную
 
-  return array.push({
+  return {
     name: randomName + ' ' + randomSurname, // Создаём ключ и записываем под ним результат генерации случайного имени
     coatColor: randomCoatColor, // Создаём ключ и записываем под ним результат генерации случайного цвета плаща
     eyesColor: randomEyesColor, // Создаём ключ и записываем под ним результат генерации случайного цвета глаз
-  });
+  };
 }
 
 function getWizards(quantity) {
   var wizards = []; // Создаём массив
 
   for (var wizard = 0; wizard < quantity; wizard++) {
-    getWizard(wizards); // Заполняем массив персонажами
+    wizards.push(getWizard()); // Заполняем массив персонажами
   }
 
   return wizards; // Возвращаем массив
@@ -57,16 +57,6 @@ function createWizard(object) {
   return wizardElement; // Возвращаем клон с нужными данными
 }
 
-function createWizards(array) {
-  var wizardsElements = []; // Создаём массив для элементов персонажей
-
-  for (var wizard = 0; wizard < array.length; wizard++) {
-    wizardsElements[wizard] = createWizard(array[wizard]); // Записываем в массив элемент персонажа
-  }
-
-  return wizardsElements; // Возвращаем массив элементов
-}
-
 function renderWizards(arrayElements, container) {
   var fragment = document.createDocumentFragment(); // Создаём фрагмент
 
@@ -80,7 +70,7 @@ function renderWizards(arrayElements, container) {
 setup.element.classList.remove('hidden'); // Показываем попап редактирования персонажа
 
 var wizards = getWizards(4); // Создаём массив с данными персонажей
-var wizardsElements = createWizards(wizards); // Создаём массив элементов персонажей
+var wizardsElements = wizards.map(createWizard); // Создаём массив элементов персонажей
 renderWizards(wizardsElements, setup.listElement); // Вставляем элементы персонажей в нужный контейнер
 
 setup.similarElement.classList.remove('hidden'); // Показываем блок с похожими персонажами
