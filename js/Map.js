@@ -12,6 +12,7 @@
       setupNameFieldElement: setupElement.querySelector('.setup-user-name'),
       setupSimilarElement: setupElement.querySelector('.setup-similar'),
       setupListElement: setupElement.querySelector('.setup-similar-list'),
+      setupUploadElement: setupElement.querySelector('.upload'),
 
       setupWizardCoatElement: setupElement.querySelector('.setup-wizard .wizard-coat'),
       setupWizardEyesElement: setupElement.querySelector('.setup-wizard .wizard-eyes'),

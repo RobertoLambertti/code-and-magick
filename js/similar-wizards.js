@@ -46,9 +46,6 @@
   var wizards = getWizards(NUMBER_WIZARDS); // Создаём массив с данными персонажей
 
   window.similarWizards = wizards.map(createWizard); // Создаём массив элементов персонажей
-
-  // TODO: Для диалога!
-  // renderElements(wizardsElements, setupListElement); // Вставляем элементы персонажей в нужный контейнер
 })();
 
 
