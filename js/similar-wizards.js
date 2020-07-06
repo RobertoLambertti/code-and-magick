@@ -1,8 +1,6 @@
 'use strict';
 
 (function () {
-  var NUMBER_WIZARDS = 4;
-
   function getWizard() {
     var randomName = window.Map.wizardsData.NAMES[window.Util.getRandomNumber(0, window.Map.wizardsData.NAMES.length)]; // Случайно выбираем имя из массива и записываем в переменную
     var randomSurname = window.Map.wizardsData.SURNAMES[window.Util.getRandomNumber(0, window.Map.wizardsData.SURNAMES.length)]; // Случайно выбираем фамилию из массива и записываем в переменную
@@ -16,36 +14,34 @@
     };
   }
 
-  function getWizards(quantity) {
-    var wizards = []; // Создаём массив
+  window.similarWizards = {
+    getWizards: function (quantity) {
+      var wizards = []; // Создаём массив
 
-    for (var wizard = 0; wizard < quantity; wizard++) {
-      wizards.push(getWizard()); // Заполняем массив персонажами
-    }
+      for (var wizard = 0; wizard < quantity; wizard++) {
+        wizards.push(getWizard()); // Заполняем массив персонажами
+      }
 
-    return wizards; // Возвращаем массив
-  }
+      return wizards; // Возвращаем массив
+    },
 
-  function createWizard(object) {
-    var template = document.querySelector('#similar-wizard-template')
-    .content
-    .querySelector('.setup-similar-item'); // Берем шаблон персонажа
+    createWizard: function (object) {
+      var template = document.querySelector('#similar-wizard-template')
+      .content
+      .querySelector('.setup-similar-item'); // Берем шаблон персонажа
 
-    var wizardElement = template.cloneNode(true); // Кнонируем узел со всем содержимым из шаблона и записываем в переменную
-    var wizardNameElement = wizardElement.querySelector('.setup-similar-label'); // Находим из клона елемент отвечающий за имя
-    var wizardCoatColorElement = wizardElement.querySelector('.wizard-coat'); // Находим из клона елемент отвечающий за цвет плаща
-    var wizardEyesColorElement = wizardElement.querySelector('.wizard-eyes'); // Находим из клона елемент отвечающий за цвет глаз
+      var wizardElement = template.cloneNode(true); // Кнонируем узел со всем содержимым из шаблона и записываем в переменную
+      var wizardNameElement = wizardElement.querySelector('.setup-similar-label'); // Находим из клона елемент отвечающий за имя
+      var wizardCoatColorElement = wizardElement.querySelector('.wizard-coat'); // Находим из клона елемент отвечающий за цвет плаща
+      var wizardEyesColorElement = wizardElement.querySelector('.wizard-eyes'); // Находим из клона елемент отвечающий за цвет глаз
 
-    wizardNameElement.textContent = object.name; // Записываем в элемент имя
-    wizardCoatColorElement.style.fill = object.coatColor; // Указываем цвет заливки для плаща
-    wizardEyesColorElement.style.fill = object.eyesColor; // Указываем цвет заливки для глаз
+      wizardNameElement.textContent = object.name; // Записываем в элемент имя
+      wizardCoatColorElement.style.fill = object.colorCoat; // Указываем цвет заливки для плаща
+      wizardEyesColorElement.style.fill = object.colorEyes; // Указываем цвет заливки для глаз
 
-    return wizardElement; // Возвращаем клон с нужными данными
-  }
-
-  var wizards = getWizards(NUMBER_WIZARDS); // Создаём массив с данными персонажей
-
-  window.similarWizards = wizards.map(createWizard); // Создаём массив элементов персонажей
+      return wizardElement; // Возвращаем клон с нужными данными
+    },
+  };
 })();
 
 

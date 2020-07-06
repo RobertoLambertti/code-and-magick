@@ -49,22 +49,19 @@
     window.Map.elements.setupUploadElement.removeEventListener('mousedown', window.dialogMove.onSetupMove); // Удаляем обработчик перемещения окна
   }
 
-  function hangHandlers() {
-    // Открытие окна настроек кликом по иконке
-    window.Map.elements.setupOpenButtonElement.addEventListener('click', function () {
-      openSetup();
-    });
-
-    // Открытие окна настроек клавишей Enter
-    window.Map.elements.setupOpenIconElement.addEventListener('keydown', function (evt) {
-      if (evt.code === 'Enter') {
+  window.dialog = {
+    hangHandlers: function () {
+      // Открытие окна настроек кликом по иконке
+      window.Map.elements.setupOpenButtonElement.addEventListener('click', function () {
         openSetup();
-      }
-    });
-  }
+      });
 
-  window.Util.renderElements(window.similarWizards, window.Map.elements.setupListElement); // Вставляем элементы персонажей в нужный контейнер
-  window.Map.elements.setupSimilarElement.classList.remove('hidden'); // Показываем похожих персонажей
-
-  hangHandlers(); // Вешаем все обработчики
+      // Открытие окна настроек клавишей Enter
+      window.Map.elements.setupOpenIconElement.addEventListener('keydown', function (evt) {
+        if (evt.code === 'Enter') {
+          openSetup();
+        }
+      });
+    }
+  };
 })();
