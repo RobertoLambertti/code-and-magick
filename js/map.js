@@ -18,6 +18,7 @@
       setupWizardEyesElement: setupElement.querySelector('.setup-wizard .wizard-eyes'),
       setupFireballElement: setupElement.querySelector('.setup-fireball-wrap'),
 
+      setupFormElement: setupElement.querySelector('.setup-wizard-form'),
       coatInputElement: setupElement.querySelector('input[name=coat-color]'),
       eyesInputElement: setupElement.querySelector('input[name=eyes-color]'),
       fireballInputElement: setupElement.querySelector('input[name=fireball-color]'),

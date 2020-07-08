@@ -1,6 +1,8 @@
 'use strict';
 
 (function () {
+  var NUMBER_WIZARDS = 4;
+
   function getWizard() {
     var randomName = window.Map.wizardsData.NAMES[window.Util.getRandomNumber(0, window.Map.wizardsData.NAMES.length)]; // Случайно выбираем имя из массива и записываем в переменную
     var randomSurname = window.Map.wizardsData.SURNAMES[window.Util.getRandomNumber(0, window.Map.wizardsData.SURNAMES.length)]; // Случайно выбираем фамилию из массива и записываем в переменную
@@ -41,7 +43,13 @@
 
       return wizardElement; // Возвращаем клон с нужными данными
     },
+
+    onLoadSuccess: function (data) {
+      var similarWizards = data
+        .slice(0, NUMBER_WIZARDS) // Обрезаем массив до 4 карточек
+        .map(window.similarWizards.createWizard); // Создаём массив элементов персонажей
+
+      window.Util.renderElements(similarWizards, window.Map.elements.setupListElement); // Вставляем элементы персонажей в нужный контейнер
+    },
   };
 })();
-
-
