@@ -3,30 +3,7 @@
 (function () {
   var NUMBER_WIZARDS = 4;
 
-  function getWizard() {
-    var randomName = window.Map.wizardsData.NAMES[window.Util.getRandomNumber(0, window.Map.wizardsData.NAMES.length)]; // Случайно выбираем имя из массива и записываем в переменную
-    var randomSurname = window.Map.wizardsData.SURNAMES[window.Util.getRandomNumber(0, window.Map.wizardsData.SURNAMES.length)]; // Случайно выбираем фамилию из массива и записываем в переменную
-    var randomCoatColor = window.Map.wizardsData.COAT_COLORS[window.Util.getRandomNumber(0, window.Map.wizardsData.COAT_COLORS.length)]; // Случайно выбираем цвет плаща из массива и записываем в переменную
-    var randomEyesColor = window.Map.wizardsData.EYES_COLORS[window.Util.getRandomNumber(0, window.Map.wizardsData.EYES_COLORS.length)]; // Случайно выбираем цвет глаз из массива и записываем в переменную
-
-    return {
-      name: randomName + ' ' + randomSurname, // Создаём ключ и записываем под ним результат генерации случайного имени
-      coatColor: randomCoatColor, // Создаём ключ и записываем под ним результат генерации случайного цвета плаща
-      eyesColor: randomEyesColor, // Создаём ключ и записываем под ним результат генерации случайного цвета глаз
-    };
-  }
-
   window.similarWizards = {
-    getWizards: function (quantity) {
-      var wizards = []; // Создаём массив
-
-      for (var wizard = 0; wizard < quantity; wizard++) {
-        wizards.push(getWizard()); // Заполняем массив персонажами
-      }
-
-      return wizards; // Возвращаем массив
-    },
-
     createWizard: function (object) {
       var template = document.querySelector('#similar-wizard-template')
       .content
