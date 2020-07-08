@@ -22,6 +22,6 @@
       } else {
         container.appendChild(fragment); // Вставляем фрагмент в разметку
       }
-    }
+    },
   };
 })();
