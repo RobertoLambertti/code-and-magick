@@ -11,13 +11,23 @@
     input.value = randomColor; // Записываем цвет в скрытое поле
   }
 
+  var onEyesChange = window.debounce(function () {
+    window.similarWizards.update();
+  });
+
+  var onCoatChange = window.debounce(function () {
+    window.similarWizards.update();
+  });
+
   window.wizardSettings = {
     onCoatClick: function () {
       selectRandomElementColor(window.Map.elements.setupWizardCoatElement, window.Map.elements.coatInputElement, window.Map.wizardsData.COAT_COLORS, 'fill');
+      onEyesChange();
     },
 
     onEyesClick: function () {
       selectRandomElementColor(window.Map.elements.setupWizardEyesElement, window.Map.elements.eyesInputElement, window.Map.wizardsData.EYES_COLORS, 'fill');
+      onCoatChange();
     },
 
     onFireballClick: function () {
